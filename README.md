@@ -1,6 +1,13 @@
 # mui-book !
 
-## Needed to match LG
+Create a copy of ui-liveguide, our private, exclusive, bespoke Amazing current
+simple style guide, as rendered by [@mui/material](https://mui.com/material-ui/getting-started/) 
+- it renders commonly used components with our custom mui theme options. [mui-llms.txt](https://mui.com/material-ui/llms.txt).
+
+As a first step to moving it all over to story-book, scaffold out all the pages, and a few bonus ones, with at least a minimal component with some prop options setup so we can easily extend later.
+
+
+## TODO to match LG
 
 ### Inputs
 * [x] Autocomplete
@@ -13,7 +20,7 @@
 * [ ] TextField
 
 ### Data Display
-* [ ] Chip
+* [x] Chip
 * [ ] Icon
 * [x] Tablepagination (table/tablepagination)
 * [ ] Tooltip
@@ -33,29 +40,17 @@
 ### Layout
 * [ ] Tabs
 
-## Not components
-* [ ] **Focus Ring* testing page
+## Utility Pages
 * [ ] Colors
-* [ ] ContrastChecker
-
-### LongJohns
-Component to render the chrome.
-
-Need this for sample page wrapper
-
-* full height by default
-* main nav
-* client branding (optional)
-* footer (optional)
-* dark mode
-* render css vars to content element for theming/theme sharing?
 
 ### Sample pages
-* home page with dashboard
-* ??
+* [x] FocusAndContrast
 
-### Misc things to test
+
+## Out of Scope
 
 * allow user to set tonal offset, how does that affect the look
 * set font sizes with rems instead of px and see if the htmlFontSize can fix it
 * if htmlFontSize works try to get responsive font sizing to work
+* ContrastChecker
+* Sample dashboard / home page
