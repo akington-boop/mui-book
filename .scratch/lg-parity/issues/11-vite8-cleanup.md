@@ -1,4 +1,4 @@
-Status: ready-for-human
+Status: needs-info
 
 ## What to build
 
