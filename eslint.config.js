@@ -29,6 +29,7 @@ export default tseslint.config(
 	{
 		rules: {
 			"@typescript-eslint/no-empty-object-type": 0,
+			"@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
 		}
 	}
 );
