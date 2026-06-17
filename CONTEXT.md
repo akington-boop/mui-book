@@ -27,3 +27,33 @@ _Avoid_: interactive story, modal story
 **Palette Story**:
 A utility Storybook story filed at the top level (`Colors`) that renders swatches for each semantic color role (primary, secondary, error, warning, info, success), showing the light/main/dark shades with their hex values and palette path.
 _Avoid_: colors page, color palette, theme colors
+
+**PropPickList**:
+The `type PropPickList` alias inside each wrapper that names the MUI props the wrapper exposes. Drives the `Pick<MuiXxxProps, PropPickList>` that forms the wrapper's base type.
+_Avoid_: allowed props, prop subset
+
+**Rounded variant** (icons):
+The preferred `@mui/icons-material` icon style for this project — always import the `*Rounded` suffix (e.g. `StarRounded`, `HomeRounded`). Non-rounded variants are not used.
+_Avoid_: default icon, filled icon
+
+## Story categories
+
+Storybook tree structure established for this project:
+
+| Category | Examples |
+|---|---|
+| `Components/Inputs/` | Select, TextField |
+| `Components/Data Display/` | Tooltip, Icon |
+| `Components/Feedback/` | Dialog, Snackbar |
+| `Components/Navigation/` | Menu |
+| `Components/Surfaces/` | Card |
+| `Components/Layout/` | Tabs |
+| `Colors` (top-level) | Palette |
+
+## Patterns
+
+**Object-prop flattening**: MUI props typed as objects (e.g. `anchorOrigin: { vertical, horizontal }`) are split into flat scalar props on the wrapper (e.g. `anchorVertical`, `anchorHorizontal`) so Storybook renders them as individual dropdown controls rather than a raw object editor.
+
+**Controlled component render**: When a component requires controlled state (e.g. Tabs `value`), the story uses a Storybook `render` function with `useState` rather than lifting state into the wrapper.
+
+**TabPanel a11y wiring**: Every Tabs story must pair `<Tabs>` with `<TabPanel>` components. Each `Tab` carries `id="tab-{i}"` and `aria-controls="tabpanel-{i}"`; each `TabPanel` carries `role="tabpanel"`, `id="tabpanel-{i}"`, `aria-labelledby="tab-{i}"`, and `tabIndex={0}` when active — per WAI-ARIA Authoring Practices.
