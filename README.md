@@ -2,14 +2,16 @@
 
 Mui Component storybook with some extras.
 
-## Future stuff
-### Infrastructure
-* start it all over with minimal storybook install instead of full to reduce the number of vulnerabilities per day
-* use the newer rolldown powered builder instead of esbuild
-* update to newest @mui/material@9.0.0
+## Deployment
 
-### Features
+The Storybook build (`npm run build-storybook` → `storybook-static/`) is published to GitHub Pages at `https://akington-boop.github.io/mui-book/`.
 
-* allow user to set tonal offset, how does that affect the look
-* ContrastChecker tool (maybe not just link to an existing one)
-* Sample pages; dashboard / home
+Deploys are automated via `.github/workflows/deploy-storybook.yml`:
+* Triggers on every push to `main`, or manually via the Actions tab (`workflow_dispatch`).
+* Builds Storybook with `npm ci` + `npm run build-storybook`.
+* Publishes `storybook-static/` using GitHub's official Pages actions (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
+* No `base` path config is needed — Storybook's static output already uses relative asset paths, so it works correctly when served from a subpath.
+
+**One-time repo setup** (not done by the workflow itself): in the repo's Settings → Pages, set Source to "GitHub Actions".
+
+**Action pinning**: workflow steps pin third-party/GitHub actions to a full commit SHA (with a `# vX.Y.Z` comment for readability) rather than a floating major-version tag, to avoid silently picking up a re-tagged or compromised action. When bumping a version, resolve the new tag's SHA (e.g. `gh api repos/<owner>/<repo>/commits/<tag> --jq '.sha'`) and update both the SHA and the version comment.
