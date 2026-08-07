@@ -1,4 +1,4 @@
-# mui-book !
+# mui-book
 
 Mui Component storybook with some extras.
 
